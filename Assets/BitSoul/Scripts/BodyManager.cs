@@ -41,4 +41,9 @@ public class BodyManager : MonoBehaviour{
     {
         currentBody = current;
     }
+
+    public GameObject GetCurrentBody()
+    {
+        return currentBody;
+    }
 }
