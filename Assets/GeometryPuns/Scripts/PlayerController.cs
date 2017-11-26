@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public float groundCheckRadius;
 	public LayerMask whatIsGround;
 	private bool grounded;
+    private bool faceRight;
 
 	private bool doubleJumped;
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player_rb = GetComponent<Rigidbody2D>();
+        faceRight = true;
 	}
 
 	void FixedUpdate(){
@@ -38,9 +40,18 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(Input.GetKey(KeyCode.RightArrow)){
 			player_rb.velocity = new Vector2(moveSpeed, player_rb.velocity.y);
+            if (!faceRight)
+                faceRight = true;
 		}
 		if(Input.GetKey(KeyCode.LeftArrow)){
 			player_rb.velocity = new Vector2(-moveSpeed, player_rb.velocity.y);
-		}
+            if (faceRight)
+                faceRight = false;
+        }
 	}
+
+    public bool isFacingRight()
+    {
+        return faceRight;
+    }
 }
