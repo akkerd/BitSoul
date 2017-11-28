@@ -8,7 +8,7 @@ public class Absorb : MonoBehaviour {
 
     private bool absorbing;
     private GameObject target;
-    private PlayerController controller;
+    private BodyMixer mixer;
     private float heading;
     private float direction;
 
@@ -16,6 +16,7 @@ public class Absorb : MonoBehaviour {
     void Start () {
         absorbing = false;
         target = null;
+        mixer = GetComponentInParent<BodyMixer>();
     }
 	
 	// Update is called once per frame
@@ -23,12 +24,18 @@ public class Absorb : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if( absorbing )
             if( other.gameObject == target)
             {
                 Destroy(target);
+                int powerValue = -1;
+                int.TryParse(other.gameObject.name, out powerValue);
+                if (powerValue == -1)
+                    Debug.Log("Power value is not a number");
+                else
+                    mixer.takePowers(powerValue);
             }
     }
 

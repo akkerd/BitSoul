@@ -13,12 +13,13 @@ public class PlayerController : MonoBehaviour {
     private bool faceRight;
 
 	private bool doubleJumped;
+    private Power activePower;
 
 	private Rigidbody2D player_rb;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		player_rb = GetComponent<Rigidbody2D>();
         faceRight = true;
 	}
@@ -53,5 +54,15 @@ public class PlayerController : MonoBehaviour {
     public bool isFacingRight()
     {
         return faceRight;
+    }
+
+    public Color getActiveColor()
+    {
+        return activePower.getColor();
+    }
+
+    public void setActivePower( Power p)
+    {
+        activePower = p;
     }
 }
