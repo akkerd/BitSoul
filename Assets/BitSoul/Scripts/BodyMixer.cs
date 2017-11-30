@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BodyMixer : MonoBehaviour {
-
-    public float absortionDistance;
-    public LayerMask whatIsTarget;
-
+    
     private Vector3 forward;
-    private GameObject player;
     private bool wRay;
-    private Absorb absorb;
-    private IDictionary<int, Power> powersDic;
+    private IDictionary<int, Color> colorDictonary;
     private LinkedList<int> activePowers;
     private PlayerController controller;
     
@@ -22,32 +17,21 @@ public class BodyMixer : MonoBehaviour {
     
     void Start () {
         // Find secondary classes
-        absorb = GetComponentInChildren<Absorb>();
         controller = GetComponent<PlayerController>();
 
         // Get the standard values
         float baseJump = controller.jumpSpeed;
         float baseSpeed = controller.moveSpeed;
 
-        //Initialize powers' dictionary
-        Power white =   new Power("white", Color.white, 1, 1, 1, 7);
-        Power cyan =    new Power("cyan", Color.cyan, 22.5f, 1, 1, 7);
-        Power magenta = new Power("magenta", Color.magenta, 7.5f, 1.5f, 1.5f, 3.5f);
-        Power yellow =  new Power("yellow", Color.yellow, 1, 0.5f, 0.5f, 14);
-        Power blue =    new Power("orange", Color.blue, 1, 1.5f, 1.5f, 7);
-        Power green =   new Power("green", Color.green, 1.5f, 0.5f, 0.5f, 7);
-        Power red =     new Power("red", Color.red, 1, 1, 1, 5.25f);
-        Power black =   new Power("black", Color.black, 1.5f, 1, 1, 7);
-
-        powersDic = new Dictionary<int, Power>();
-        powersDic.Add(1, white);      // white
-        powersDic.Add(3, cyan);        // cyan
-        powersDic.Add(5, magenta);  // magenta
-        powersDic.Add(7, yellow);    // yellow
-        powersDic.Add(15, blue);        // blue
-        powersDic.Add(21, green);      // green
-        powersDic.Add(35, red);          // red
-        powersDic.Add(105, black);      // black
+        colorDictonary = new Dictionary<int, Color>();
+        colorDictonary.Add(1, Color.white); // white
+        colorDictonary.Add(3, Color.cyan);        // cyan
+        colorDictonary.Add(5, Color.magenta);  // magenta
+        colorDictonary.Add(7, Color.yellow);    // yellow
+        colorDictonary.Add(15, Color.blue);        // blue
+        colorDictonary.Add(21, Color.green);      // green
+        colorDictonary.Add(35, Color.red);          // red
+        colorDictonary.Add(105, Color.black);     // black
 
         // Initialize active powers' List
         activePowers = new LinkedList<int>();
@@ -65,30 +49,7 @@ public class BodyMixer : MonoBehaviour {
         else
             direction = -1;
 
-        Debug.DrawLine(transform.position, new Vector2(transform.position.x + (direction*absortionDistance), transform.position.y), Color.green);
-
-        // If player is in absortion range...
-        if ( Physics2D.OverlapCircle(transform.position, absortionDistance, whatIsTarget ) )
-        {
-            //... check if the player has the merging button pressed and if so...
-            if ( Input.GetKey( KeyCode.M ) )
-            {
-                //... enable absorbtion
-                absorb.setAbsorbing(true);
-                // Find clone's GameObject
-                player = Physics2D.OverlapCircle(transform.position, absortionDistance, whatIsTarget).gameObject;
-                // Attract the player 
-                absorb.absorbTarget(player);
-
-                //Get color and atributtes from other player 
-            }
-        }
-        
-        // If merging button is released, cancel absorb
-        if( Input.GetButtonUp("Merge") )
-        {
-            absorb.setAbsorbing(false);
-        }
+        Debug.DrawLine(transform.position, new Vector2(transform.position.x + (direction*100), transform.position.y), Color.green);
 	}
 
     public void takePowers(int power)
@@ -102,44 +63,10 @@ public class BodyMixer : MonoBehaviour {
         }
 
         // Set new power as the Active power
-        Power newPower = powersDic[powerIndex];
-        controller.setActivePower(newPower); // Set active power sets the new power values on the controller
+        //Power newPower = powersDic[powerIndex];
+        //controller.setActivePower(newPower); // Set active power sets the new power values on the controller
 
         // Set attributes of the new power on the player
-        sprite.color = newPower.getColor();
+        sprite.color = colorDictonary[powerIndex];
     }
-
-    /*public void takePowers(string power)
-    {
-        int powerValue = -1;
-        // Search in the powers dictionary for the value of that color
-        foreach ( int i in powersDic.Keys )
-        {
-            if (powersDic[i].getColorName() == power)
-            {
-                powerValue = i;
-                break;
-            }
-        }
-        // Security check, if power not found stop
-        if( powerValue == -1)
-        {
-            return;
-        }
-
-        activePowers.AddLast(powerValue);
-        int powerIndex = 1;
-        // Calculate new color value with our "prime numbers color calculation" system
-        foreach ( int i in activePowers)
-        {
-            powerIndex *= i;
-        }
-
-        // Set new power as the Active power
-        Power newPower = powersDic[powerIndex];
-        controller.setActivePower(newPower);
-
-        // Set attributes of the new power on the player
-        sprite.color = newPower.getColor();
-    }*/
 }
