@@ -9,14 +9,16 @@ public class Power{
     private float jump;
     private float size;
     private float weight;
+    private float speed;
 
-    public Power( string colorName, Color color, float jump, float size, float weight)
+    public Power( string colorName, Color color, float jump, float size, float weight, float speed)
     {
         this.colorName = colorName;
         this.color = color;
         this.jump = jump;
         this.size = size;
         this.weight = weight;
+        this.speed = speed;
     }
     public string getColorName()
     {
@@ -27,5 +29,22 @@ public class Power{
     {
         return color;
     }
-    
+
+    public float getJump()
+    {
+        return jump;
+    }
+    public float getSize()
+    {
+        return size;
+    }
+
+    public float getWeight()
+    {
+        return weight;
+    }
+    public float getSpeed()
+    {
+        return speed;
+    }
 }

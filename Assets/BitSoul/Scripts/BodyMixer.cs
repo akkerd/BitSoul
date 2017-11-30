@@ -25,15 +25,19 @@ public class BodyMixer : MonoBehaviour {
         absorb = GetComponentInChildren<Absorb>();
         controller = GetComponent<PlayerController>();
 
+        // Get the standard values
+        float baseJump = controller.jumpSpeed;
+        float baseSpeed = controller.moveSpeed;
+
         //Initialize powers' dictionary
-        Power white =   new Power("white", Color.white, 1, 1, 1);
-        Power cyan =    new Power("cyan", Color.cyan, 1.5f, 1, 1);
-        Power magenta = new Power("magenta", Color.magenta, 0.5f, 1.5f, 1.5f);
-        Power yellow =  new Power("yellow", Color.yellow, 1, 0.5f, 0.5f);
-        Power blue =    new Power("blue", Color.blue, 1, 1.5f, 1.5f);
-        Power green =   new Power("green", Color.green, 1.5f, 0.5f, 0.5f);
-        Power red =     new Power("red", Color.red, 1, 1, 1);
-        Power black =   new Power("black", Color.black, 1.5f, 1, 1);
+        Power white =   new Power("white", Color.white, 1, 1, 1, 7);
+        Power cyan =    new Power("cyan", Color.cyan, 22.5f, 1, 1, 7);
+        Power magenta = new Power("magenta", Color.magenta, 7.5f, 1.5f, 1.5f, 3.5f);
+        Power yellow =  new Power("yellow", Color.yellow, 1, 0.5f, 0.5f, 14);
+        Power blue =    new Power("orange", Color.blue, 1, 1.5f, 1.5f, 7);
+        Power green =   new Power("green", Color.green, 1.5f, 0.5f, 0.5f, 7);
+        Power red =     new Power("red", Color.red, 1, 1, 1, 5.25f);
+        Power black =   new Power("black", Color.black, 1.5f, 1, 1, 7);
 
         powersDic = new Dictionary<int, Power>();
         powersDic.Add(1, white);      // white
@@ -99,7 +103,7 @@ public class BodyMixer : MonoBehaviour {
 
         // Set new power as the Active power
         Power newPower = powersDic[powerIndex];
-        controller.setActivePower(newPower);
+        controller.setActivePower(newPower); // Set active power sets the new power values on the controller
 
         // Set attributes of the new power on the player
         sprite.color = newPower.getColor();

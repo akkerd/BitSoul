@@ -41,7 +41,8 @@ public class Absorb : MonoBehaviour {
 
     public void absorbTarget( GameObject other )
     {
-        target = other;
+        if( target != other )
+            target = other;
 
         heading = ( GameObject.FindGameObjectWithTag("Player").transform.position - other.transform.position ).x;
         if (heading > 0)

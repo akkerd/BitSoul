@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	public float moveSpeed = 7.0f;
-	public float jumpSpeed = 15.0f;
+	public float moveSpeed;
+	public float jumpSpeed;
+    public int identifier;
 
 	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask whatIsGround;
+
 	private bool grounded;
     private bool faceRight;
 
@@ -64,5 +66,8 @@ public class PlayerController : MonoBehaviour {
     public void setActivePower( Power p)
     {
         activePower = p;
+        moveSpeed = p.getSpeed();
+        jumpSpeed = p.getJump();
+        player_rb.mass = p.getWeight();
     }
 }
