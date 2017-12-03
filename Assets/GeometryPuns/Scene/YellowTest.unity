@@ -348,6 +348,11 @@ Prefab:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 1207441267}
+    - target: {fileID: 114295346725253006, guid: 8b2a00a0ecb122740bd20d6b0b63a653,
+        type: 2}
+      propertyPath: power.y
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b2a00a0ecb122740bd20d6b0b63a653, type: 2}
   m_IsPrefabParent: 0
