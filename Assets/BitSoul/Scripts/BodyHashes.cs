@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BodyHashes : MonoBehaviour {
 
-    public GameObject[] bodyObjects;
+    public List<GameObject> bodyObjects;
     private int currentIndex;
-    private BodyManager bm;
 
     // Use this for initialization
     void Start ()
     {
-        bm = this.GetComponent<BodyManager>();
+        bodyObjects = new List<GameObject>();
         currentIndex = 0;
-        bm.SetCurrentBody(bodyObjects[currentIndex]);
+        bodyObjects.Add( GameObject.FindGameObjectWithTag("Player") );
+        //bodyObjects.Add( GameObject.Find("Magenta") );
     }
 	
 	// Update is called once per frame
@@ -23,9 +23,9 @@ public class BodyHashes : MonoBehaviour {
     
     public GameObject GetNextCharacter()
     {
-        if(bodyObjects.Length != 0 )
+        if(bodyObjects.Count != 0 )
         {
-            if (bodyObjects.Length-1 == currentIndex)
+            if (bodyObjects.Count-1 == currentIndex)
                 currentIndex = 0;
             else
                 currentIndex++;
@@ -43,5 +43,10 @@ public class BodyHashes : MonoBehaviour {
     public GameObject getCurrentBody()
     {
         return bodyObjects[currentIndex];
+    }
+
+    public void addNewPlayer(GameObject p)
+    {
+        bodyObjects.Add(p);
     }
 }

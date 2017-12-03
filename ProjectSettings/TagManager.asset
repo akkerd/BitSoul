@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - EnergyBar
   - BodyManager
   - Enemy
   - Breakable
@@ -17,7 +19,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Clone
   - 
   - 
   - 

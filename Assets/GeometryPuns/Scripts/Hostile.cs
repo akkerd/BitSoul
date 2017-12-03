@@ -17,8 +17,11 @@ public class Hostile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D ( Collider2D other){
-		if(other.name == "Player"){
-			levelManager.RespawnPlayer();
+		if(other.tag == "Player"){
+            if (other.name == "Magenta")
+                Destroy(this);
+            else
+			    levelManager.RespawnPlayer();
 		}
 	}
 }
