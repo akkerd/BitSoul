@@ -13,7 +13,7 @@ public class BodyHashes : MonoBehaviour {
         bodyObjects = new List<GameObject>();
         currentIndex = 0;
         bodyObjects.Add( GameObject.FindGameObjectWithTag("Player") );
-        bodyObjects.Add( GameObject.Find("Magenta") );
+        //bodyObjects.Add( GameObject.Find("Magenta") );
     }
 	
 	// Update is called once per frame

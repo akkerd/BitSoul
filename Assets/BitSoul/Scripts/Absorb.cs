@@ -8,12 +8,14 @@ public class Absorb : MonoBehaviour {
     private bool absorbing;
     private List<GameObject> targets;
     private BodyMixer mixer;
+    private BodyHashes bodyHashes;
 
     // Use this for initialization
     void Start () {
         absorbing = false;
         targets = new List<GameObject>();
         mixer = GetComponentInParent<BodyMixer>();
+        bodyHashes = FindObjectOfType<BodyHashes>();
     }
 	
 	// Update is called once per frame
@@ -32,11 +34,16 @@ public class Absorb : MonoBehaviour {
         if (absorbing)
         {
             if (LayerMask.LayerToName(other.gameObject.layer) == "Clone" )
-            //if (other.gameObject.layer == LayerMask.GetMask("Clone") )
             {
-                int otherID = other.gameObject.GetComponent<PlayerController>().identifier;
-                Destroy(other.gameObject);
+                GameObject player = other.gameObject;
+                int otherID = player.GetComponent<PlayerController>().identifier;
+                // Save Clone GameObject in BodyHashes
+                bodyHashes.addNewPlayer(player);
+                // Destroy Clone object
+                //Destroy(player);
 
+                // Disable Clone Gameobject
+                player.SetActive(false);
                 mixer.takePowers(otherID);
             }
         }
