@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - EnergyBar
+  - BodyManager
+  - Enemy
+  - Breakable
   layers:
   - Default
   - TransparentFX
@@ -13,8 +16,6 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
   - Ground
   - Clone
   - 
