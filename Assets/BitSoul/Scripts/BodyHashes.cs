@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BodyHashes : MonoBehaviour {
 
-    public List<GameObject> bodyObjects;
+    public List<GameObject> storedBodyObjects;
     private int currentIndex;
 
     // Use this for initialization
     void Start ()
     {
-        bodyObjects = new List<GameObject>();
+        storedBodyObjects = new List<GameObject>();
         currentIndex = 0;
-        bodyObjects.Add( GameObject.FindGameObjectWithTag("Player") );
+        //storedBodyObjects.Add( GameObject.FindGameObjectWithTag("Player") );
         //bodyObjects.Add( GameObject.Find("Magenta") );
     }
 	
@@ -23,14 +23,14 @@ public class BodyHashes : MonoBehaviour {
     
     public GameObject GetNextCharacter()
     {
-        if(bodyObjects.Count != 0 )
+        if(storedBodyObjects.Count != 0 )
         {
-            if (bodyObjects.Count-1 == currentIndex)
+            if (storedBodyObjects.Count-1 == currentIndex)
                 currentIndex = 0;
             else
                 currentIndex++;
 
-            return bodyObjects[currentIndex];
+            return storedBodyObjects[currentIndex];
         }
         else
         {
@@ -42,11 +42,11 @@ public class BodyHashes : MonoBehaviour {
 
     public GameObject getCurrentBody()
     {
-        return bodyObjects[currentIndex];
+        return storedBodyObjects[currentIndex];
     }
 
     public void addNewPlayer(GameObject p)
     {
-        bodyObjects.Add(p);
+        storedBodyObjects.Add(p);
     }
 }

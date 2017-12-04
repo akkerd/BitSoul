@@ -49,7 +49,7 @@ public class BodyMixer : MonoBehaviour {
         else
             direction = -1;
 
-        Debug.DrawLine(transform.position, new Vector2(transform.position.x + (direction*100), transform.position.y), Color.green);
+        Debug.DrawLine(transform.position, new Vector2(transform.position.x + (direction*10), transform.position.y), Color.green);
 	}
 
     public void takePowers(int power)

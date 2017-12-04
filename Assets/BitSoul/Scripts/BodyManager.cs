@@ -5,6 +5,7 @@ using UnityEngine;
 public class BodyManager : MonoBehaviour{
 
     private BodyHashes bh;
+    public List<GameObject> activeBodyObjects;
     private GameObject currentBody;
     private CameraController camControl;
 
@@ -12,9 +13,11 @@ public class BodyManager : MonoBehaviour{
     void Start()
     {
         bh = GetComponent<BodyHashes>();
-        
-        // Find player
+        activeBodyObjects = new List<GameObject>();
+
+        // Find player and set it as first active Body
         currentBody = GameObject.FindGameObjectWithTag("Player");
+        activeBodyObjects.Add(currentBody);
 
         camControl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         //camControl.setCameraOnPlayer(currentBody);
