@@ -62,10 +62,6 @@ public class BodyMixer : MonoBehaviour {
             powerIndex *= i;
         }
 
-        // Set new power as the Active power
-        //Power newPower = powersDic[powerIndex];
-        //controller.setActivePower(newPower); // Set active power sets the new power values on the controller
-
         // Set attributes of the new power on the player
         sprite.color = colorDictonary[powerIndex];
     }

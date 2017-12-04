@@ -29,23 +29,28 @@ public class Absorb : MonoBehaviour {
         absorbing = b;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D( Collider2D other )
     {
         if (absorbing)
         {
             if (LayerMask.LayerToName(other.gameObject.layer) == "Clone" )
             {
-                GameObject player = other.gameObject;
-                int otherID = player.GetComponent<PlayerController>().identifier;
-                // Save Clone GameObject in BodyHashes
-                bodyHashes.addNewPlayer(player);
-                // Destroy Clone object
-                //Destroy(player);
-
-                // Disable Clone Gameobject
-                player.SetActive(false);
-                mixer.takePowers(otherID);
+                absorb(other.gameObject);
             }
         }
+    }
+
+    private void absorb(GameObject newPlayer)
+    {
+        int otherID = newPlayer.GetComponent<PlayerController>().identifier;
+        // Save Clone GameObject in BodyHashes
+        bodyHashes.addNewPlayer(newPlayer);
+        
+        // Destroy Clone object
+        //Destroy(player);
+
+        // Disable Clone Gameobject
+        newPlayer.SetActive(false);
+        mixer.takePowers(otherID);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BodyManager : MonoBehaviour{
 
     private BodyHashes bh;
-    public List<GameObject> activeBodyObjects;
+    public LinkedList<GameObject> activeBodyObjects;
     private GameObject currentBody;
     private CameraController camControl;
 
@@ -13,11 +13,11 @@ public class BodyManager : MonoBehaviour{
     void Start()
     {
         bh = GetComponent<BodyHashes>();
-        activeBodyObjects = new List<GameObject>();
+        activeBodyObjects = new LinkedList<GameObject>();
 
         // Find player and set it as first active Body
         currentBody = GameObject.FindGameObjectWithTag("Player");
-        activeBodyObjects.Add(currentBody);
+        activeBodyObjects.AddFirst(currentBody);
 
         camControl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         //camControl.setCameraOnPlayer(currentBody);
@@ -37,9 +37,17 @@ public class BodyManager : MonoBehaviour{
         /* Disable old body scripts and tags */
         setPlayerComponents(currentBody, false);
         currentBody.tag = "Untagged";
-        
-        currentBody = bh.GetNextCharacter();                                                            // Change to next body
-        camControl.setCameraOnPlayer(currentBody);                                                      // Change Camera Target
+
+        if( activeBodyObjects.Find(currentBody).Next != null ) // Check if there is Next node
+        {
+            currentBody = activeBodyObjects.Find(currentBody).Next.Value;   // Find the current player node, get the next node and then get the GameObject in it (its Value)
+        }
+        else
+        {
+            currentBody = activeBodyObjects.First.Value;                    // Find the first player node and then get the GameObject in it (its Value)
+        }
+            
+        camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
 
         /* Enable new body scripts and tags */
         setPlayerComponents(currentBody, true);
