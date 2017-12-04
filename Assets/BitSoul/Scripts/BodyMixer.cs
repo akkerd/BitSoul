@@ -59,6 +59,7 @@ public class BodyMixer : MonoBehaviour {
         }
 
         // Set attributes of the new power on the player
+        Debug.Log(mergedColor);
         sprite.color = colorDictonary[mergedColor];
     }
 

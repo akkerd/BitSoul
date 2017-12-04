@@ -25,36 +25,22 @@ public class CollectColor : MonoBehaviour {
         player = other.gameObject;
 
         // check if collider is player & not a clone
-        if (player.tag == "Player" && LayerMask.LayerToName(player.layer) != "Clone")
+        if (this.gameObject.GetComponent<BoxCollider2D>().enabled == true)
         {
-            mixer = player.GetComponentInParent<BodyMixer>();
-          
-            mixer.takeColor(fountainColorCode);
-            int arrIndex = mixer.calculateArrayIndex(fountainColorCode);
-            bodyManager.StoreClone(arrIndex);
-            sr.sprite = emptyFountain;
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-            /*switch(fountainColorCode)
+            if (player.tag == "Player" && LayerMask.LayerToName(player.layer) != "Clone")
             {
-                case 3:
-                    body = (GameObject)Instantiate(Resources.Load("CyanPlayer"));
-                    break;
-                case 5:
-                    body = (GameObject)Instantiate(Resources.Load("MagentaPlayer"));
-                    break;
-                case 7:
-                    body = (GameObject)Instantiate(Resources.Load("YellowPlayer"));
-                    break;
-                default:
-                    break;
-                    
-            }*/
+                mixer = player.GetComponentInParent<BodyMixer>();
+                mixer.takeColor(fountainColorCode);
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                int arrIndex = mixer.calculateArrayIndex(fountainColorCode);
+                bodyManager.StoreClone(arrIndex);
+                sr.sprite = emptyFountain;
+            }
         }
 
     }
+    
 
- 
 
     //TODO: Code to change sprite back when a clone dies. 
 }
