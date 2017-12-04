@@ -8,14 +8,18 @@ public class Absorb : MonoBehaviour {
     private bool absorbing;
     private List<GameObject> targets;
     private BodyMixer mixer;
-    private BodyHashes bodyHashes;
+    private BodyManager bodyManager;
 
     // Use this for initialization
     void Start () {
         absorbing = false;
         targets = new List<GameObject>();
         mixer = GetComponentInParent<BodyMixer>();
-        bodyHashes = FindObjectOfType<BodyHashes>();
+        bodyManager = FindObjectOfType<BodyManager>();
+        if (bodyManager == null)
+        {
+            Debug.Log("Body Manger is not found");
+        }
     }
 	
 	// Update is called once per frame
@@ -43,14 +47,22 @@ public class Absorb : MonoBehaviour {
     private void absorb(GameObject newPlayer)
     {
         int otherID = newPlayer.GetComponent<PlayerController>().identifier;
-        // Save Clone GameObject in BodyHashes
-        bodyHashes.addNewPlayer(newPlayer);
-        
+
+        // Save Clone GameObject in BodyManager
+        int arrayIndex = getIndexFromIdentifier(otherID);
+        bodyManager.StoreClone(arrayIndex);
+        bodyManager.setActiveBody(arrayIndex, false);
+
         // Destroy Clone object
-        //Destroy(player);
+        //Destroy(newPlayer);
 
         // Disable Clone Gameobject
         newPlayer.SetActive(false);
-        mixer.takePowers(otherID);
+        mixer.takeColor(otherID);
+    }
+
+    public int getIndexFromIdentifier( int id )
+    {
+        return ( id - 1 ) / 2;
     }
 }

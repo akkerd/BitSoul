@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 50342679751675506}
   - component: {fileID: 61087497612609982}
   - component: {fileID: 114350818132457360}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BluePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510588019444136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -1.5, z: 0}
+  m_LocalPosition: {x: -5.44, y: -2.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4889680402395262}
@@ -181,13 +181,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510588019444136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef51b5cbeabf61842a4f54b0eaf885c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
   jumpSpeed: 15
+  identifier: 3
   wallJumpSpeed: 20
   groundCheck: {fileID: 4889680402395262}
   groundCheckRadius: 0.1
@@ -196,6 +197,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  grounded: 0
+  doubleJumped: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 1024
@@ -232,7 +235,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 19d27e85c6db2c04f9c84f86fab7ab2d, type: 3}
-  m_Color: {r: 0.1397059, g: 0.6084179, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

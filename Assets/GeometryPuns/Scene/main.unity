@@ -108,6 +108,48 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &56893739
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.042434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.1980557
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &68378224
 Prefab:
   m_ObjectHideFlags: 0
@@ -187,7 +229,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -507,7 +549,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -625,11 +667,19 @@ MonoBehaviour:
   moveSpeed: 7
   jumpSpeed: 15
   identifier: 0
+  wallJumpSpeed: 20
   groundCheck: {fileID: 536792372}
   groundCheckRadius: 0.1
+  rightCheck: {fileID: 0}
+  leftCheck: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  grounded: 0
+  doubleJumped: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &441824921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -645,7 +695,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -729,7 +779,7 @@ Transform:
   m_Children:
   - {fileID: 536792372}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &453075189
 Prefab:
@@ -875,7 +925,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &867969695
 MonoBehaviour:
@@ -976,7 +1026,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -1100,7 +1150,7 @@ Transform:
   - {fileID: 997390788}
   - {fileID: 117814153}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1115510988 stripped
 Transform:
@@ -1265,6 +1315,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4572049037893324, guid: 260bdcacdfb3db844af966f3c90cf8b2,
     type: 2}
   m_PrefabInternal: {fileID: 453075189}
+--- !u!1001 &1803843622
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.8352594
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.6004475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700512651608656, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: df76af88377a4ba438c87d1a769d15f6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1909792593 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1419407295856242, guid: aa185338686691a46ac3c9346d23d005,

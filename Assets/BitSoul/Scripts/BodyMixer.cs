@@ -48,17 +48,17 @@ public class BodyMixer : MonoBehaviour {
         Debug.DrawLine(transform.position, new Vector2(transform.position.x + (direction*10), transform.position.y), Color.green);
 	}
 
-    public void takePowers(int power)
+    public void takeColor(int colorID)
     {
-        activePowers.AddLast(power);
-        int powerIndex = 1;
+        activePowers.AddLast(colorID);
+        int mergedColor = 1;
         // Calculate new color value with our "prime numbers color calculation" system
         foreach (int i in activePowers)
         {
-            powerIndex *= i;
+            mergedColor *= i;
         }
 
         // Set attributes of the new power on the player
-        sprite.color = colorDictonary[powerIndex];
+        sprite.color = colorDictonary[mergedColor];
     }
 }

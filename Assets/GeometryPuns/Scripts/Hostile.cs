@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Hostile : MonoBehaviour {
 
-	public LevelManager levelManager;
+    //public LevelManager levelManager;
+    private LevelManager levelManager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		levelManager = FindObjectOfType<LevelManager>();
 	}
 	

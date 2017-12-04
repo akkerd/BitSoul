@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update() {
-
 		CheckJump();
 		Control();
 		CheckMove();

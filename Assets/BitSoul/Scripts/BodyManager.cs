@@ -5,19 +5,27 @@ using UnityEngine;
 public class BodyManager : MonoBehaviour{
 
     private BodyHashes bh;
-    public LinkedList<GameObject> activeBodyObjects;
+    private GameObject[] bodyObjects;
+    private bool[] activeBodies;
+    private bool[] storedBodies;
     private GameObject currentBody;
+    private int currentIndex;
     private CameraController camControl;
 
     // Use this for initialization
     void Start()
     {
         bh = GetComponent<BodyHashes>();
-        activeBodyObjects = new LinkedList<GameObject>();
 
+        // TODO get and assign GameObjects 
+        bodyObjects = new GameObject[4];
+        activeBodies = new bool[4] { true, false, false, false };
+        storedBodies = new bool[4] { true, false, false, false };
+
+        currentIndex = 0;
         // Find player and set it as first active Body
         currentBody = GameObject.FindGameObjectWithTag("Player");
-        activeBodyObjects.AddFirst(currentBody);
+        bodyObjects[currentIndex] = currentBody;
 
         camControl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         //camControl.setCameraOnPlayer(currentBody);
@@ -38,15 +46,18 @@ public class BodyManager : MonoBehaviour{
         setPlayerComponents(currentBody, false);
         currentBody.tag = "Untagged";
 
-        if( activeBodyObjects.Find(currentBody).Next != null ) // Check if there is Next node
+        for ( int i = currentIndex; i < currentIndex+4; i++  )
         {
-            currentBody = activeBodyObjects.Find(currentBody).Next.Value;   // Find the current player node, get the next node and then get the GameObject in it (its Value)
+            int ind = i % 4;
+            if (activeBodies[ind])
+            {
+                currentBody = bodyObjects[ind];
+                currentIndex = ind;
+                Debug.Log(ind);
+                break;
+            }
         }
-        else
-        {
-            currentBody = activeBodyObjects.First.Value;                    // Find the first player node and then get the GameObject in it (its Value)
-        }
-            
+    
         camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
 
         /* Enable new body scripts and tags */
@@ -79,5 +90,15 @@ public class BodyManager : MonoBehaviour{
             go.GetComponent<BoxCollider2D>().enabled = true;
             go.GetComponent<SpriteRenderer>().enabled = true;
         }
+    }
+
+    public void StoreClone(int identifier)
+    {
+        storedBodies[identifier] = true;
+    }
+
+    public void setActiveBody(int identifier, bool b)
+    {
+        activeBodies[identifier] = b;
     }
 }
