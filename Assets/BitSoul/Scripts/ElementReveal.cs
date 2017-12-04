@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ElementReveal : MonoBehaviour {
-    public GameObject exit;
+    public List<GameObject> elements;
     public Color mainColor;
     private GameObject player;
     private SpriteRenderer sr;
@@ -27,8 +27,11 @@ public class ElementReveal : MonoBehaviour {
         if (player.tag == "Player")
         {
             sr.color = Color.gray;
-            exit.GetComponent<Renderer>().enabled = true;
-            exit.GetComponent<BoxCollider2D>().enabled = true;
+            foreach (GameObject element in elements)
+            {
+                element.GetComponent<Renderer>().enabled = true;
+                element.GetComponent<BoxCollider2D>().enabled = true;
+            }
         }
 
     }
@@ -40,8 +43,11 @@ public class ElementReveal : MonoBehaviour {
         if(player.tag == "Player")
         {
             sr.color = mainColor;
-            exit.GetComponent<Renderer>().enabled = false;
-            exit.GetComponent<BoxCollider2D>().enabled = false;
+            foreach (GameObject element in elements)
+            {
+                element.GetComponent<Renderer>().enabled = false;
+                element.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 }

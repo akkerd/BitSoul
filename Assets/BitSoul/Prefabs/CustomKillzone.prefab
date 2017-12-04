@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4863410322514130}
   - component: {fileID: 61721278389911244}
-  - component: {fileID: 114627910187158468}
+  - component: {fileID: 114778150620058338}
   m_Layer: 0
   m_Name: CustomKillzone
   m_TagString: Untagged
@@ -66,7 +66,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 72.56122, y: 4.9515467}
   m_EdgeRadius: 0
---- !u!114 &114627910187158468
+--- !u!114 &114778150620058338
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1829564555492408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45866224d0233c4880504470a194dce, type: 3}
+  m_Script: {fileID: 11500000, guid: df674f0556ceb1746bb3f3c3bf6c3dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  levelManager: {fileID: 0}
