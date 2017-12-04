@@ -12,6 +12,9 @@ public class BodyManager : MonoBehaviour{
     private int currentIndex;
     private CameraController camControl;
 
+    public GameObject cyan;
+    public GameObject magenta;
+
     // Use this for initialization
     void Start()
     {
@@ -26,6 +29,17 @@ public class BodyManager : MonoBehaviour{
         // Find player and set it as first active Body
         currentBody = GameObject.FindGameObjectWithTag("Player");
         bodyObjects[currentIndex] = currentBody;
+
+        cyan.SetActive(false);
+        magenta.SetActive(false);
+        bodyObjects[1] = cyan;
+        bodyObjects[2] = magenta;
+
+        storedBodies[1] = true;
+        storedBodies[2] = true;
+
+        activeBodies[1] = false;
+        activeBodies[2] = false;
 
         camControl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         //camControl.setCameraOnPlayer(currentBody);
@@ -64,6 +78,24 @@ public class BodyManager : MonoBehaviour{
         currentBody.tag = "Player";
     }
 
+    public void SwitchToIndex(int index)
+    {
+        if (activeBodies[index])
+        {
+            setPlayerComponents(currentBody, false);
+            currentBody.tag = "Untagged";
+
+            currentBody = bodyObjects[index];
+            currentIndex = index;
+
+            camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
+
+            /* Enable new body scripts and tags */
+            setPlayerComponents(currentBody, true);
+            currentBody.tag = "Player";
+        }
+    }
+
     public void SetCurrentBody( GameObject current)
     {
         currentBody = current;
@@ -72,6 +104,36 @@ public class BodyManager : MonoBehaviour{
     public GameObject GetCurrentBody()
     {
         return currentBody;
+    }
+
+    public bool SetActiveBody(int index)
+    {
+        if (activeBodies[index])
+        {
+            SwitchToIndex(index);
+            return true;
+        }
+        else if (storedBodies[index])
+        {
+            Vector3 variance = new Vector3(3, 0);
+            /*if (GetComponent<PlayerController>().isFacingRight())
+                variance = new Vector3(3, 0);
+            else
+                variance = new Vector3(-3, 0);
+                */
+            Vector3 newpos = currentBody.transform.position + variance;
+
+            Debug.Log(newpos + "  " + currentBody.transform.position + "  " + variance);
+            bodyObjects[index].transform.SetPositionAndRotation(newpos, currentBody.transform.rotation);
+            bodyObjects[index].SetActive(true);
+
+            activeBodies[index] = true;
+            SwitchToIndex(index);
+
+            return true;
+        }
+
+        return false;
     }
 
     MonoBehaviour[] comps;
