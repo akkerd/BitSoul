@@ -14,6 +14,7 @@ public class BodyManager : MonoBehaviour{
 
     public GameObject magenta;
     public GameObject cyan;
+    public GameObject yellow;
 
     // Use this for initialization
     void Start()
@@ -31,6 +32,7 @@ public class BodyManager : MonoBehaviour{
         bodyObjects[0] = currentBody;
         bodyObjects[1] = magenta;
         bodyObjects[2] = cyan;
+        bodyObjects[3] = yellow;
         activeBodies[1] = true;
         activeBodies[2] = true;
 
