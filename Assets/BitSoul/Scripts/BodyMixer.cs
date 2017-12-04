@@ -61,4 +61,9 @@ public class BodyMixer : MonoBehaviour {
         // Set attributes of the new power on the player
         sprite.color = colorDictonary[mergedColor];
     }
+
+    public int calculateArrayIndex( int id )
+    {
+        return (id - 1) / 2;
+    }
 }

@@ -16,6 +16,7 @@ public class Absorb : MonoBehaviour {
         targets = new List<GameObject>();
         mixer = GetComponentInParent<BodyMixer>();
         bodyManager = FindObjectOfType<BodyManager>();
+
         if (bodyManager == null)
         {
             Debug.Log("Body Manger is not found");
@@ -49,7 +50,7 @@ public class Absorb : MonoBehaviour {
         int otherID = newPlayer.GetComponent<PlayerController>().identifier;
 
         // Save Clone GameObject in BodyManager
-        int arrayIndex = getIndexFromIdentifier(otherID);
+        int arrayIndex = mixer.calculateArrayIndex(otherID);
         bodyManager.StoreClone(arrayIndex);
         bodyManager.setActiveBody(arrayIndex, false);
 
@@ -59,10 +60,5 @@ public class Absorb : MonoBehaviour {
         // Disable Clone Gameobject
         newPlayer.SetActive(false);
         mixer.takeColor(otherID);
-    }
-
-    public int getIndexFromIdentifier( int id )
-    {
-        return ( id - 1 ) / 2;
     }
 }

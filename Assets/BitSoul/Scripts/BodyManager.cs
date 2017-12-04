@@ -53,7 +53,6 @@ public class BodyManager : MonoBehaviour{
             {
                 currentBody = bodyObjects[ind];
                 currentIndex = ind;
-                Debug.Log(ind);
                 break;
             }
         }
