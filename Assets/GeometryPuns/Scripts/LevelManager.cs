@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour {
 	public GameObject deathParticle;
 
 	private PlayerController player;
+    private Color particleColor;
 
 	public float respawnDelay = 0.5f;
 
@@ -23,11 +24,15 @@ public class LevelManager : MonoBehaviour {
 		
 	}
 
-	public void RespawnPlayer(){
+	public void RespawnPlayer(GameObject playerToRespawn){
+        player = playerToRespawn.GetComponent<PlayerController>();
+        particleColor = player.GetComponent<SpriteRenderer>().color;
 		StartCoroutine("RespawnPlayerCo");
 	}
 
 	public IEnumerator RespawnPlayerCo (){
+        ParticleSystem.MainModule system = deathParticle.GetComponent<ParticleSystem>().main;
+        system.startColor = particleColor;
 		Instantiate(deathParticle, player.transform.position, player.transform.rotation);
 		player.enabled = false;
 		player.GetComponent<Renderer>().enabled = false;

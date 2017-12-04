@@ -18,11 +18,23 @@ public class Hostile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D ( Collider2D other){
-		if(other.tag == "Player"){
-            if (other.name == "Magenta")
-                Destroy(this);
+		if(other.tag == "Player")
+        {
+            GameObject player = other.gameObject;
+            if (LayerMask.LayerToName(player.layer) == "Clone")
+                if (player.GetComponent<PlayerController>().identifier == 5)
+                {
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    levelManager.RespawnPlayer(player);
+                }
             else
-			    levelManager.RespawnPlayer();
+            {
+                levelManager.RespawnPlayer(player);
+
+            }
 		}
 	}
 }

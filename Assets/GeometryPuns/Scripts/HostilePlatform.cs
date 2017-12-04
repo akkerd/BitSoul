@@ -53,16 +53,16 @@ public class HostilePlatform : MonoBehaviour {
 	void OnTriggerEnter2D ( Collider2D other){
         if (other.name == "Player")
         {
-            
+            GameObject player = other.gameObject;
+            Color playerColor = player.GetComponent<SpriteRenderer>().color;
 
-            //if (other.gameObject.getActiveColor().Equals(wallColor))
-            if (Color.yellow.Equals(platformColor))
+            if ( playerColor.Equals(platformColor) )
             {
-                other.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(power, ForceMode2D.Impulse);
+                player.GetComponent<Rigidbody2D>().AddRelativeForce(power, ForceMode2D.Impulse);
             }
             else
             {
-                levelManager.RespawnPlayer();
+                levelManager.RespawnPlayer(player);
             }
         }
     }

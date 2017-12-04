@@ -114,6 +114,16 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 800202835}
   m_Script: {fileID: 11500000, guid: e31d409f674294e47bfacb167fbe051d, type: 3}
+--- !u!1 &12970406 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1510588019444136, guid: 0ff549db8333c5e40a50a7c8c40cac60,
+    type: 2}
+  m_PrefabInternal: {fileID: 142183274}
+--- !u!1 &103483634 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1797705770467454, guid: e8d7239bd772d1d4584879414e5955ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 916081139}
 --- !u!1001 &142183274
 Prefab:
   m_ObjectHideFlags: 0
@@ -152,6 +162,10 @@ Prefab:
     - target: {fileID: 4107535302209688, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510588019444136, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_Name
+      value: CyanPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 1510588019444136, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
       propertyPath: m_TagString
@@ -386,6 +400,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b51bfdc3aadd4f9478f11cb65f8ba35b, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &896232667 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4672057297990834, guid: e8d7239bd772d1d4584879414e5955ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 916081139}
 --- !u!4 &902248138 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a,
@@ -435,6 +454,21 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114693555753091120, guid: e8d7239bd772d1d4584879414e5955ba,
+        type: 2}
+      propertyPath: whatIsGround.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114693555753091120, guid: e8d7239bd772d1d4584879414e5955ba,
+        type: 2}
+      propertyPath: rightCheck
+      value: 
+      objectReference: {fileID: 896232667}
+    - target: {fileID: 114693555753091120, guid: e8d7239bd772d1d4584879414e5955ba,
+        type: 2}
+      propertyPath: leftCheck
+      value: 
+      objectReference: {fileID: 896232667}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8d7239bd772d1d4584879414e5955ba, type: 2}
   m_IsPrefabParent: 0
@@ -477,6 +511,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114577931043332336, guid: e828ef1550b29964db76607c9be32053,
+        type: 2}
+      propertyPath: magenta
+      value: 
+      objectReference: {fileID: 103483634}
+    - target: {fileID: 114577931043332336, guid: e828ef1550b29964db76607c9be32053,
+        type: 2}
+      propertyPath: cyan
+      value: 
+      objectReference: {fileID: 12970406}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e828ef1550b29964db76607c9be32053, type: 2}
   m_IsPrefabParent: 0

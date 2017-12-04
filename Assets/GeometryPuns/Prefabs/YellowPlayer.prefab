@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1845468632078116
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -130,11 +130,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   jumpSpeed: 15
+  identifier: 0
+  wallJumpSpeed: 20
   groundCheck: {fileID: 4889680402395262}
   groundCheckRadius: 0.1
+  rightCheck: {fileID: 0}
+  leftCheck: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  grounded: 0
+  doubleJumped: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &212271995753250660
 SpriteRenderer:
   m_ObjectHideFlags: 1

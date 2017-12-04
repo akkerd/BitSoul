@@ -12,8 +12,9 @@ public class BodyManager : MonoBehaviour{
     private int currentIndex;
     private CameraController camControl;
 
-    public GameObject cyan;
     public GameObject magenta;
+    public GameObject cyan;
+    public GameObject yellow;
 
     // Use this for initialization
     void Start()
@@ -28,18 +29,16 @@ public class BodyManager : MonoBehaviour{
         currentIndex = 0;
         // Find player and set it as first active Body
         currentBody = GameObject.FindGameObjectWithTag("Player");
-        bodyObjects[currentIndex] = currentBody;
 
         cyan.SetActive(false);
         magenta.SetActive(false);
+        yellow.SetActive(false);
+
+        bodyObjects[0] = currentBody;
         bodyObjects[1] = cyan;
         bodyObjects[2] = magenta;
+        bodyObjects[3] = yellow;
 
-        storedBodies[1] = true;
-        storedBodies[2] = true;
-
-        activeBodies[1] = false;
-        activeBodies[2] = false;
 
         camControl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         //camControl.setCameraOnPlayer(currentBody);
@@ -60,7 +59,7 @@ public class BodyManager : MonoBehaviour{
         setPlayerComponents(currentBody, false);
         currentBody.tag = "Untagged";
 
-        for ( int i = currentIndex; i < currentIndex+4; i++  )
+        for ( int i = currentIndex+1; i < currentIndex+4; i++  )
         {
             int ind = i % 4;
             if (activeBodies[ind])
