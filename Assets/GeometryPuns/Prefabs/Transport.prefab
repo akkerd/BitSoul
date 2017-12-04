@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4503983036555466}
   - component: {fileID: 212222337199677918}
   - component: {fileID: 61836750739209214}
-  - component: {fileID: 114173635789393406}
+  - component: {fileID: 114825432779093768}
   m_Layer: 0
-  m_Name: Exit
+  m_Name: Transport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2326965, y: 1.2320957}
   m_EdgeRadius: 0
---- !u!114 &114173635789393406
+--- !u!114 &114825432779093768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,9 +75,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1387902125418638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51b11965aa69fa948ac5d46136192c52, type: 3}
+  m_Script: {fileID: 11500000, guid: e48933cb556109c48912c8afd1781e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transportLink: {fileID: 0}
 --- !u!212 &212222337199677918
 SpriteRenderer:
   m_ObjectHideFlags: 1
