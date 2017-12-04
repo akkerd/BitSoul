@@ -3,56 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-<<<<<<< HEAD
+
 	public float moveSpeed;
 	public float jumpSpeed;
     public int identifier;
-=======
-	public float moveSpeed = 7.0f;
-	public float jumpSpeed = 15.0f;
-	public float wallJumpSpeed = 20.0f;
->>>>>>> player-control
-
-	public Transform groundCheck;
+    public float wallJumpSpeed = 20.0f;
+    public Transform groundCheck;
 	public float groundCheckRadius;
 	public Transform rightCheck;
 	public Transform leftCheck;
 	private float wallCheckRadius = 0.4f;
 	public LayerMask whatIsGround;
-<<<<<<< HEAD
 
-	private bool grounded;
+	public bool grounded;
     private bool faceRight;
-
-	private bool doubleJumped;
+	public bool doubleJumped;
     private Power activePower;
-=======
 	public LayerMask whatIsWall;
-	protected bool grounded;
 	protected bool Lwalled;
 	protected bool Rwalled;
-    private bool faceRight;
-
-	protected bool doubleJumped;
 	private bool wallJumped = false;
->>>>>>> player-control
 
 	protected Rigidbody2D player_rb;
 
-
-<<<<<<< HEAD
     // Use this for initialization
-    void Start () {
-=======
-	public virtual void Control(){
+    void Start()
+    {
+        player_rb = GetComponent<Rigidbody2D>();
+        faceRight = true;
+    }
+
+    public virtual void Control(){
 		// This can be overwritten by inherited classes
 		// for special abillities
-	}
-		
-	void Start () {
->>>>>>> player-control
-		player_rb = GetComponent<Rigidbody2D>();
-        faceRight = true;
 	}
 
 	void FixedUpdate(){
@@ -91,12 +74,6 @@ public class PlayerController : MonoBehaviour {
 				faceRight = false;
 		}
 	}
-<<<<<<< HEAD
-
-    public bool isFacingRight()
-    {
-        return faceRight;
-    }
 
     public Color getActiveColor()
     {
@@ -110,6 +87,4 @@ public class PlayerController : MonoBehaviour {
         jumpSpeed = p.getJump();
         player_rb.mass = p.getWeight();
     }
-=======
->>>>>>> player-control
 }

@@ -19,10 +19,6 @@ public class BodyMixer : MonoBehaviour {
         // Find secondary classes
         controller = GetComponent<PlayerController>();
 
-        // Get the standard values
-        float baseJump = controller.jumpSpeed;
-        float baseSpeed = controller.moveSpeed;
-
         colorDictonary = new Dictionary<int, Color>();
         colorDictonary.Add(1, Color.white); // white
         colorDictonary.Add(3, Color.cyan);        // cyan
