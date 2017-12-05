@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour {
     public float wallJumpSpeed = 20.0f;
     public Transform groundCheck;
 	public float groundCheckRadius;
-	public Transform rightCheck;
+    public LayerMask whatToIgnore;
+    public Transform rightCheck;
 	public Transform leftCheck;
 	private float wallCheckRadius = 0.4f;
 	public LayerMask whatIsGround;

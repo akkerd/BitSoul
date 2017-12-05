@@ -5,6 +5,7 @@ using UnityEngine;
 public class BodyManager : MonoBehaviour{
 
     private BodyHashes bh;
+    private BodyMixer mixer;
     private GameObject[] bodyObjects;
     private bool[] activeBodies;
     private bool[] storedBodies;
@@ -24,11 +25,12 @@ public class BodyManager : MonoBehaviour{
         // TODO get and assign GameObjects 
         bodyObjects = new GameObject[4];
         activeBodies = new bool[4] { true, false, false, false };
-        storedBodies = new bool[4] { true, false, false, false };
+        storedBodies = new bool[4] { true, false, false, false};
 
         currentIndex = 0;
         // Find player and set it as first active Body
         currentBody = GameObject.FindGameObjectWithTag("Player");
+        mixer = currentBody.GetComponent<BodyMixer>();
 
         cyan.SetActive(false);
         magenta.SetActive(false);
@@ -120,9 +122,13 @@ public class BodyManager : MonoBehaviour{
             else
                 variance = new Vector3(-3, 0);
                 */
+
+            // Remove color from MainPLayer list in order to calculate the remaining color
+            mixer.withdrawColor( (index*2)+1 );
+
             Vector3 newpos = currentBody.transform.position + variance;
 
-            Debug.Log(newpos + "  " + currentBody.transform.position + "  " + variance);
+            //Debug.Log(newpos + "  " + currentBody.transform.position + "  " + variance);
             bodyObjects[index].transform.SetPositionAndRotation(newpos, currentBody.transform.rotation);
             bodyObjects[index].SetActive(true);
 

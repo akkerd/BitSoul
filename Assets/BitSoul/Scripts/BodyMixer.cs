@@ -59,6 +59,20 @@ public class BodyMixer : MonoBehaviour {
         }
 
         // Set attributes of the new power on the player
+        sprite.color = colorDictonary[mergedColor];
+    }
+
+    public void withdrawColor(int colorID)
+    {
+        activePowers.Remove(colorID);
+        int mergedColor = 1;
+        // Calculate new color value with our "prime numbers color calculation" system
+        foreach (int i in activePowers)
+        {
+            mergedColor *= i;
+        }
+
+        // Set attributes of the new power on the player
         Debug.Log(mergedColor);
         sprite.color = colorDictonary[mergedColor];
     }

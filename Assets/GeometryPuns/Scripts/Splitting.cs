@@ -29,7 +29,6 @@ public class Splitting : MonoBehaviour {
 
         if (index > -1)
         {
-            Debug.Log(LayerMask.LayerToName(playable.layer));
             if (LayerMask.LayerToName(playable.layer) != "Clone")
             {
                 bm.SetActiveBody(index);

@@ -6,6 +6,7 @@ public class MovingPlatformEnable : MonoBehaviour {
 
     public List<GameObject> movingPlatforms;
     public Color mainColor;
+    public bool enable;
     private GameObject player;
     private SpriteRenderer sr;
 
@@ -33,7 +34,7 @@ public class MovingPlatformEnable : MonoBehaviour {
             sr.color = Color.gray;
             foreach (GameObject element in movingPlatforms)
             {
-                element.GetComponent<MovingPlatform>().enabled = true;
+                element.GetComponent<MovingPlatform>().enabled = enable;
             
             }
         }

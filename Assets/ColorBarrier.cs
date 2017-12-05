@@ -53,8 +53,8 @@ public class ColorBarrier : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            //if (other.gameObject.getActiveColor().Equals(wallColor))
-            if (Color.cyan.Equals(wallColor))
+            if (other.gameObject.GetComponent<SpriteRenderer>().color.Equals(wallColor))
+            //if (Color.magenta.Equals(wallColor))
             {
                 Physics2D.IgnoreCollision(other, GetComponent<Collider2D>());
             }
