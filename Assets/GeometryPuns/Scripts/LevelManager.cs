@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -24,6 +25,10 @@ public class LevelManager : MonoBehaviour {
 		
 	}
 
+	public void LoadScene(string scene){
+		SceneManager.LoadScene(scene);
+	}
+
 	public void RespawnPlayer(GameObject playerToRespawn){
         player = playerToRespawn.GetComponent<PlayerController>();
         particleColor = player.GetComponent<SpriteRenderer>().color;
@@ -36,7 +41,7 @@ public class LevelManager : MonoBehaviour {
 		Instantiate(deathParticle, player.transform.position, player.transform.rotation);
 		player.enabled = false;
 		player.GetComponent<Renderer>().enabled = false;
-		Debug.Log("PLayer respawn");
+//		Debug.Log("PLayer respawn");
 		yield return new WaitForSeconds(respawnDelay);
 		player.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;

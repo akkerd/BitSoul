@@ -128,22 +128,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cca08377b3ca440b0cfe19da45fc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
-  jumpSpeed: 7.5
+  moveSpeed: 7
+  jumpSpeed: 15
   identifier: 5
-  wallJumpSpeed: 20
   groundCheck: {fileID: 4672057297990834}
   groundCheckRadius: 0.1
-  rightCheck: {fileID: 0}
-  leftCheck: {fileID: 0}
+  whatToIgnore:
+    serializedVersion: 2
+    m_Bits: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 768
   grounded: 0
-  doubleJumped: 0
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &212720248955762440
 SpriteRenderer:
   m_ObjectHideFlags: 1

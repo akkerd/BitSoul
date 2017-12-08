@@ -26,7 +26,7 @@ public class Attract : MonoBehaviour {
         if (Physics2D.OverlapCircle(transform.position, attractionDistance, whatIsTarget))
         {
             //... check if the player has the merging button pressed and if so...
-            if (Input.GetKey(KeyCode.M))
+			if (Input.GetButton("Merge"))
             {
                 //... enable absorbtion
                 absorb.setAbsorbing(true);

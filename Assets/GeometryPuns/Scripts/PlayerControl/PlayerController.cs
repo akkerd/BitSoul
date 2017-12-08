@@ -7,32 +7,43 @@ public class PlayerController : MonoBehaviour {
 	public float moveSpeed;
 	public float jumpSpeed;
     public int identifier;
-    public float wallJumpSpeed = 20.0f;
+    
     public Transform groundCheck;
 	public float groundCheckRadius;
     public LayerMask whatToIgnore;
-    public Transform rightCheck;
-	public Transform leftCheck;
-	private float wallCheckRadius = 0.4f;
+    
+
+
 	public LayerMask whatIsGround;
 
 	public bool grounded;
     private bool faceRight;
-	public bool doubleJumped;
+
     private Power activePower;
-	public LayerMask whatIsWall;
-	protected bool Lwalled;
-	protected bool Rwalled;
-	private bool wallJumped = false;
+
+
 
 	protected Rigidbody2D player_rb;
 
     // Use this for initialization
     void Start()
     {
-        player_rb = GetComponent<Rigidbody2D>();
-        faceRight = true;
+		InitPlayer();
     }
+
+	public virtual void InitPlayer(){
+		// This can be overwritten by inherited classes
+		// for special abillities
+		player_rb = GetComponent<Rigidbody2D>();
+		faceRight = true;
+	}
+
+	public virtual void PlayerChecks(){
+		// This can be overwritten by inherited classes
+		// for special abillities
+		grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
+	}
 
     public virtual void Control(){
 		// This can be overwritten by inherited classes
@@ -40,9 +51,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-		Rwalled = Physics2D.OverlapCircle(rightCheck.position, wallCheckRadius, whatIsWall);
-		Lwalled = Physics2D.OverlapCircle(leftCheck.position, wallCheckRadius, whatIsWall);
+		PlayerChecks();
 	}
 
 	void Update() {
@@ -57,13 +66,13 @@ public class PlayerController : MonoBehaviour {
     }
 
 	protected void CheckJump (){
-		if(Input.GetKeyDown(KeyCode.Space) && grounded){
+		if(Input.GetButton("Jump") && grounded){
 			player_rb.velocity = new Vector2(0.0f, jumpSpeed);
 		}
 	}
 
 	protected void CheckMove(){
-		if(Input.GetKey(KeyCode.RightArrow)){
+/*		if(Input.GetKey(KeyCode.RightArrow)){
 			player_rb.velocity = new Vector2(moveSpeed, player_rb.velocity.y);
 			if (!faceRight)
 				faceRight = true;
@@ -72,7 +81,19 @@ public class PlayerController : MonoBehaviour {
 			player_rb.velocity = new Vector2(-moveSpeed, player_rb.velocity.y);
 			if (faceRight)
 				faceRight = false;
+		}*/
+
+		float horizontal = Input.GetAxis("Horizontal");
+
+		if(horizontal != 0){
+			player_rb.velocity = new Vector2(moveSpeed * horizontal, player_rb.velocity.y);
+			if (horizontal < 0)
+				faceRight = false;
+			else{
+				faceRight = true;
+			}
 		}
+		Debug.Log("Horizontal: " + Input.GetAxis("Horizontal"));
 	}
 
     public Color getActiveColor()
