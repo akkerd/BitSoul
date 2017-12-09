@@ -50,7 +50,28 @@ public class LevelManager : MonoBehaviour {
     {
         instantiateDeathParticles(cloneToSet.transform, cloneToSet.GetComponent<SpriteRenderer>().color);
         cloneToSet.SetActive(false);
-        bodyManager.SetInactiveBody(cloneToSet.GetComponent<PlayerController>().identifier);
+
+        int id = cloneToSet.GetComponent<PlayerController>().identifier;
+        bodyManager.SetInactiveBody(id);
+        resetFountain(id);
+        bodyManager.SwitchToIndex(0);
+    }
+
+    private void resetFountain(int colorId)
+    {
+        GameObject[] fountains = GameObject.FindGameObjectsWithTag("ColorFountain");
+
+        foreach (GameObject f in fountains)
+        {
+            CollectColor cc = f.GetComponent<CollectColor>();
+            
+            int id = cc.fountainColorCode;
+
+            if (id == colorId)
+            {
+                cc.setFountainActive();
+            }
+        }
     }
 
     private void instantiateDeathParticles( Transform playerTr, Color playerColor )
