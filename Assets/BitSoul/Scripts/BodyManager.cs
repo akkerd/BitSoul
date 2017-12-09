@@ -77,6 +77,12 @@ public class BodyManager : MonoBehaviour{
         /* Enable new body scripts and tags */
         setPlayerComponents(currentBody, true);
         currentBody.tag = "Player";
+
+        // For ignoring clone collision
+        if(currentBody.GetComponent<PlayerController>().identifier == 1)
+            Physics2D.IgnoreLayerCollision(11, 9, true);
+        else
+            Physics2D.IgnoreLayerCollision(11, 9, false);
     }
 
     public void SwitchToIndex(int index)
@@ -94,6 +100,12 @@ public class BodyManager : MonoBehaviour{
             /* Enable new body scripts and tags */
             setPlayerComponents(currentBody, true);
             currentBody.tag = "Player";
+
+            // For ignoring slone collisions
+            if (index == 0)
+                Physics2D.IgnoreLayerCollision(11, 9, true);
+            else
+                Physics2D.IgnoreLayerCollision(11, 9, false);
         }
     }
 

@@ -28,10 +28,14 @@ public class Attract : MonoBehaviour {
             //... check if the player has the merging button pressed and if so...
 			if (Input.GetButton("Merge"))
             {
+                // Enable clone/player collision
+                Physics2D.IgnoreLayerCollision(11, 9, false);
+
                 //... enable absorbtion
                 absorb.setAbsorbing(true);
                 // Find clone's GameObject
                 clone = Physics2D.OverlapCircle(transform.position, attractionDistance, whatIsTarget).gameObject;
+                
                 // Attract the player 
                 if( clone )
                 {
@@ -43,7 +47,11 @@ public class Attract : MonoBehaviour {
 
                     clone.GetComponent<Rigidbody2D>().AddForce(direction * transform.right * attractionForce);
                 }
-             
+            }
+            else
+            {
+                // Disable clone/player collision
+                Physics2D.IgnoreLayerCollision(11, 9, true);
             }
         }
 

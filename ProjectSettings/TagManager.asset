@@ -45,3 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1738505145
+    locked: 0
+  - name: Clones
+    uniqueID: 3031822419
+    locked: 0
+  - name: Player
+    uniqueID: 1144758279
+    locked: 0

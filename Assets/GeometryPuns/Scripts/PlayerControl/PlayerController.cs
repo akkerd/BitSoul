@@ -9,9 +9,7 @@ public class PlayerController : MonoBehaviour {
     public int identifier;
     
     public Transform groundCheck;
-	public float groundCheckRadius;
-    public LayerMask whatToIgnore;
-    
+	public float groundCheckRadius;   
 
 
 	public LayerMask whatIsGround;
