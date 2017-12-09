@@ -141,6 +141,13 @@ public class BodyManager : MonoBehaviour{
         return false;
     }
 
+    public void SetInactiveBody(int identifier)
+    {
+        int index = mixer.calculateArrayIndex(identifier);
+        activeBodies[index] = false;
+        storedBodies[index] = false;
+    }
+
     MonoBehaviour[] comps;
     private void setPlayerComponents( GameObject go, bool isEnabled )
     {

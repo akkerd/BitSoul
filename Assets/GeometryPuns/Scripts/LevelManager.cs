@@ -8,16 +8,15 @@ public class LevelManager : MonoBehaviour {
 	public GameObject currentCheckpoint;
 	public GameObject deathParticle;
 
-	private PlayerController player;
-    private Color particleColor;
+    //private PlayerController player;
+    //private Color particleColor;
+    private BodyManager bodyManager;
 
 	public float respawnDelay = 0.5f;
 
 	// Use this for initialization
 	void Start () {
-        //player = FindObjectOfType<PlayerController>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
+        bodyManager = GameObject.FindGameObjectWithTag("BodyManager").GetComponent<BodyManager>();
 	}
 	
 	// Update is called once per frame
@@ -29,24 +28,35 @@ public class LevelManager : MonoBehaviour {
 		SceneManager.LoadScene(scene);
 	}
 
-	public void RespawnPlayer(GameObject playerToRespawn){
-        player = playerToRespawn.GetComponent<PlayerController>();
-        particleColor = player.GetComponent<SpriteRenderer>().color;
-		StartCoroutine("RespawnPlayerCo");
+	public void RespawnPlayer( GameObject playerToRespawn ){
+        bodyManager.SwitchToIndex(0);
+		StartCoroutine("RespawnPlayerCo", playerToRespawn);
 	}
 
-	public IEnumerator RespawnPlayerCo (){
-        ParticleSystem.MainModule system = deathParticle.GetComponent<ParticleSystem>().main;
-        system.startColor = particleColor;
-		Instantiate(deathParticle, player.transform.position, player.transform.rotation);
-		player.enabled = false;
+	private IEnumerator RespawnPlayerCo ( GameObject player ){
+        PlayerController pc = player.GetComponent<PlayerController>();
+        pc.enabled = false;
+        instantiateDeathParticles(player.transform, player.GetComponent<SpriteRenderer>().color);
+		player.GetComponent<PlayerController>().enabled = false;
 		player.GetComponent<Renderer>().enabled = false;
-//		Debug.Log("PLayer respawn");
+
 		yield return new WaitForSeconds(respawnDelay);
-		player.enabled = true;
+		pc.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;
 		player.transform.position = currentCheckpoint.transform.position;
-
 	}
 
+    public void setCloneInactive(GameObject cloneToSet)
+    {
+        instantiateDeathParticles(cloneToSet.transform, cloneToSet.GetComponent<SpriteRenderer>().color);
+        cloneToSet.SetActive(false);
+        bodyManager.SetInactiveBody(cloneToSet.GetComponent<PlayerController>().identifier);
+    }
+
+    private void instantiateDeathParticles( Transform playerTr, Color playerColor )
+    {
+        ParticleSystem.MainModule system = deathParticle.GetComponent<ParticleSystem>().main;
+        system.startColor = playerColor;
+        Instantiate(deathParticle, playerTr.position, playerTr.rotation);
+    }
 }

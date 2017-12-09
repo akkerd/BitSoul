@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 				faceRight = true;
 			}
 		}
-		Debug.Log("Horizontal: " + Input.GetAxis("Horizontal"));
+		//Debug.Log("Horizontal: " + Input.GetAxis("Horizontal"));
 	}
 
     public Color getActiveColor()
