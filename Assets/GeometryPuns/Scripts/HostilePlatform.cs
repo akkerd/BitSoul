@@ -7,7 +7,7 @@ public class HostilePlatform : MonoBehaviour
 
     public LevelManager levelManager;
     public string color = "yellow";
-    private Vector2 defaultPower = new Vector2(0, 15.0f);
+    private Vector2 defaultPower = new Vector2(0, 10.0f);
     private Vector2 strongPower = new Vector2(0, 30.0f);
     private Vector2 power;
     private Color platformColor;
