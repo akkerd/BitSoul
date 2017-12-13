@@ -10,4 +10,7 @@ EditorBuildSettings:
     guid: 857e8463a4f28b14c9bab0a03c765365
   - enabled: 1
     path: Assets/GeometryPuns/Scene/Tutorial.unity
+    guid: 46d0848110566d44cb8a6f5c909fdb77
+  - enabled: 1
+    path: Assets/GeometryPuns/Scene/Level01.unity
     guid: bf6c22a179b3236448ae54a097111721

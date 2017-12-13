@@ -41,7 +41,7 @@ public class ElementEnableAndDisable : MonoBehaviour {
                     renderer.GetComponent<Renderer>().enabled = enable;
                 }
 
-                BoxCollider2D[] boxColliders = player.GetComponents<BoxCollider2D>();
+                BoxCollider2D[] boxColliders = element.GetComponents<BoxCollider2D>();
 
                 foreach (BoxCollider2D collider in boxColliders)
                 {

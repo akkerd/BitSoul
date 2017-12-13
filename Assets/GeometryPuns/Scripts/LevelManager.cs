@@ -28,6 +28,12 @@ public class LevelManager : MonoBehaviour {
 		SceneManager.LoadScene(scene);
 	}
 
+	public void LoadNext(){
+		int scene = SceneManager.GetActiveScene().buildIndex;
+
+		SceneManager.LoadScene(scene + 1);
+	}
+
 	public void RespawnPlayer( GameObject playerToRespawn ){
         bodyManager.SwitchToIndex(0);
 		StartCoroutine("RespawnPlayerCo", playerToRespawn);
