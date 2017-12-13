@@ -690,6 +690,10 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1510588019444136, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ff549db8333c5e40a50a7c8c40cac60, type: 2}
   m_IsPrefabParent: 0
@@ -1342,11 +1346,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 12.1
+      value: 13.3
       objectReference: {fileID: 0}
     - target: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1490,6 +1494,7 @@ MonoBehaviour:
   elements:
   - {fileID: 862678029}
   - {fileID: 947984480}
+  enable: 1
   mainColor: {r: 0.11372549, g: 0.6156863, b: 0.972549, a: 1}
 --- !u!1 &291510323
 GameObject:
@@ -5920,6 +5925,31 @@ GameObject:
   m_PrefabParentObject: {fileID: 1912135199202268, guid: d6dfb86510202a64a986b32195f00f1c,
     type: 2}
   m_PrefabInternal: {fileID: 136983738}
+--- !u!61 &1481238473
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1481238472}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.05, y: 1.2}
+  m_EdgeRadius: 0
 --- !u!1001 &1485167182
 Prefab:
   m_ObjectHideFlags: 0
@@ -7409,7 +7439,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4462211299859254, guid: aa185338686691a46ac3c9346d23d005, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.32
+      value: 13.68
       objectReference: {fileID: 0}
     - target: {fileID: 4462211299859254, guid: aa185338686691a46ac3c9346d23d005, type: 2}
       propertyPath: m_LocalPosition.y

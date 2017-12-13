@@ -22,11 +22,33 @@ public class MovingPlatform : MonoBehaviour {
         {
             Vector2 newPosition = new Vector2(transform.position.x, Mathf.PingPong(Time.time*speed, length) + baseY);
             //
-            Debug.Log("New position: "+ newPosition);
-            Debug.Log("PingPong: "+ Mathf.PingPong(Time.time, length));
+            //Debug.Log("New position: "+ newPosition);
+            //Debug.Log("PingPong: "+ Mathf.PingPong(Time.time, length));
 
             transform.position = newPosition;
         }
         
+    }
+
+    private GameObject player;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        player = other.gameObject; 
+        if (LayerMask.LayerToName(player.layer) == "Player" || LayerMask.LayerToName(player.layer) == "Clone")
+        {
+            player.transform.parent = this.transform;
+            Debug.Log("Player"+ player.name +"is child");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        player = other.gameObject;
+        if (LayerMask.LayerToName(player.layer) == "Player" || LayerMask.LayerToName(player.layer) == "Clone")
+        {
+            player.transform.parent = null;
+            Debug.Log("Player detached");
+
+        }
     }
 }
