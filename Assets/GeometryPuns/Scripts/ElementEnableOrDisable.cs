@@ -33,8 +33,21 @@ public class ElementEnableOrDisable : MonoBehaviour {
             sr.color = Color.gray;
             foreach (GameObject element in elements)
             {
-                element.GetComponent<Renderer>().enabled = enable;
-                element.GetComponent<BoxCollider2D>().enabled = enable;
+                Renderer[] renderers = element.GetComponents<Renderer>();
+
+                foreach(Renderer renderer in renderers)
+                {
+                   renderer.GetComponent<Renderer>().enabled = enable;
+                }
+
+                BoxCollider2D[] boxColliders = element.GetComponents<BoxCollider2D>();
+
+                foreach (BoxCollider2D collider in boxColliders)
+                {
+                    collider.GetComponent<BoxCollider2D>().enabled = enable;
+                }
+                
+                
             }
 
         }

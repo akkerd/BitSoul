@@ -32,8 +32,19 @@ public class ElementEnableAndDisable : MonoBehaviour {
             sr.color = Color.gray;
             foreach (GameObject element in elements)
             {
-                element.GetComponent<Renderer>().enabled = true;
-                element.GetComponent<BoxCollider2D>().enabled = true;
+                Renderer[] renderers = element.GetComponents<Renderer>();
+
+                foreach (Renderer renderer in renderers)
+                {
+                    renderer.GetComponent<Renderer>().enabled = true;
+                }
+
+                BoxCollider2D[] boxColliders = player.GetComponents<BoxCollider2D>();
+
+                foreach (BoxCollider2D collider in boxColliders)
+                {
+                    collider.GetComponent<BoxCollider2D>().enabled = true;
+                }
             }
         }
 
@@ -48,8 +59,19 @@ public class ElementEnableAndDisable : MonoBehaviour {
             sr.color = mainColor;
             foreach (GameObject element in elements)
             {
-                element.GetComponent<Renderer>().enabled = false;
-                element.GetComponent<BoxCollider2D>().enabled = false;
+                Renderer[] renderers = element.GetComponents<Renderer>();
+
+                foreach (Renderer renderer in renderers)
+                {
+                    renderer.GetComponent<Renderer>().enabled = false;
+                }
+
+                BoxCollider2D[] boxColliders = element.GetComponents<BoxCollider2D>();
+
+                foreach (BoxCollider2D collider in boxColliders)
+                {
+                    collider.GetComponent<BoxCollider2D>().enabled = false;
+                }
             }
         }
     }
