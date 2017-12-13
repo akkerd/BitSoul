@@ -5,9 +5,11 @@ using UnityEngine;
 public class ElementEnableAndDisable : MonoBehaviour {
 
     public List<GameObject> elements;
+    public bool enable;
     public Color mainColor;
     private GameObject player;
     private SpriteRenderer sr;
+
 
     // Use this for initialization
     void Start()
@@ -36,14 +38,14 @@ public class ElementEnableAndDisable : MonoBehaviour {
 
                 foreach (Renderer renderer in renderers)
                 {
-                    renderer.GetComponent<Renderer>().enabled = true;
+                    renderer.GetComponent<Renderer>().enabled = enable;
                 }
 
                 BoxCollider2D[] boxColliders = player.GetComponents<BoxCollider2D>();
 
                 foreach (BoxCollider2D collider in boxColliders)
                 {
-                    collider.GetComponent<BoxCollider2D>().enabled = true;
+                    collider.GetComponent<BoxCollider2D>().enabled = enable;
                 }
             }
         }
@@ -63,14 +65,14 @@ public class ElementEnableAndDisable : MonoBehaviour {
 
                 foreach (Renderer renderer in renderers)
                 {
-                    renderer.GetComponent<Renderer>().enabled = false;
+                    renderer.GetComponent<Renderer>().enabled = !enable;
                 }
 
                 BoxCollider2D[] boxColliders = element.GetComponents<BoxCollider2D>();
 
                 foreach (BoxCollider2D collider in boxColliders)
                 {
-                    collider.GetComponent<BoxCollider2D>().enabled = false;
+                    collider.GetComponent<BoxCollider2D>().enabled = !enable;
                 }
             }
         }
