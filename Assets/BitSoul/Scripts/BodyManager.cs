@@ -87,10 +87,14 @@ public class BodyManager : MonoBehaviour{
         currentBody.tag = "Player";
 
         // For ignoring clone collision
-        if(currentBody.GetComponent<PlayerController>().identifier == 1)
+        int currentIdentifier = currentBody.GetComponent<PlayerController>().identifier;
+        if (currentIdentifier == 1)
             Physics2D.IgnoreLayerCollision(11, 9, true);
         else
             Physics2D.IgnoreLayerCollision(11, 9, false);
+
+        // Sound events
+        OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/player", currentIdentifier);
     }
 
     public void SwitchToIndex(int index)
@@ -118,6 +122,9 @@ public class BodyManager : MonoBehaviour{
                 Physics2D.IgnoreLayerCollision(11, 9, true);
             else
                 Physics2D.IgnoreLayerCollision(11, 9, false);
+
+            // Sound events
+            OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/player", currentBody.GetComponent<PlayerController>().identifier);
         }
     }
 
