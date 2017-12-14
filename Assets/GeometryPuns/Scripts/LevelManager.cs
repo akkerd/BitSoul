@@ -11,12 +11,14 @@ public class LevelManager : MonoBehaviour {
     //private PlayerController player;
     //private Color particleColor;
     private BodyManager bodyManager;
+    UIManager ui;
 
 	public float respawnDelay = 0.5f;
 
 	// Use this for initialization
 	void Start () {
         bodyManager = GameObject.FindGameObjectWithTag("BodyManager").GetComponent<BodyManager>();
+        ui = FindObjectOfType<UIManager>();
 	}
 	
 	// Update is called once per frame
@@ -58,6 +60,7 @@ public class LevelManager : MonoBehaviour {
         cloneToSet.SetActive(false);
 
         int id = cloneToSet.GetComponent<PlayerController>().identifier;
+        ui.uiLoseColor(id);
         bodyManager.SetInactiveBody(id);
         resetFountain(id);
         bodyManager.SwitchToIndex(0);

@@ -17,6 +17,8 @@ public class BodyManager : MonoBehaviour{
     public GameObject cyan;
     public GameObject yellow;
 
+    UIManager ui;
+
     // Use this for initialization
     void Start()
     {
@@ -41,6 +43,7 @@ public class BodyManager : MonoBehaviour{
         bodyObjects[2] = magenta;
         bodyObjects[3] = yellow;
 
+        ui = FindObjectOfType<UIManager>();
 
         camControl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         //camControl.setCameraOnPlayer(currentBody);
@@ -60,6 +63,8 @@ public class BodyManager : MonoBehaviour{
         /* Disable old body scripts and tags */
         setPlayerComponents(currentBody, false);
         currentBody.tag = "Untagged";
+        int colorCode = mixer.calculateColorFromIndex(currentIndex);
+        ui.uiSetInactive(colorCode);
 
         for ( int i = currentIndex+1; i < currentIndex+4; i++  )
         {
@@ -68,10 +73,13 @@ public class BodyManager : MonoBehaviour{
             {
                 currentBody = bodyObjects[ind];
                 currentIndex = ind;
+                colorCode = mixer.calculateColorFromIndex(ind);
+                ui.uiSetActive(colorCode);
                 break;
             }
         }
-    
+
+       
         camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
 
         /* Enable new body scripts and tags */
@@ -89,11 +97,15 @@ public class BodyManager : MonoBehaviour{
     {
         if (activeBodies[index])
         {
+            int colorCode = mixer.calculateColorFromIndex(currentIndex);
+            ui.uiSetInactive(colorCode);
             setPlayerComponents(currentBody, false);
             currentBody.tag = "Untagged";
 
             currentBody = bodyObjects[index];
             currentIndex = index;
+            colorCode = mixer.calculateColorFromIndex(index);
+            ui.uiSetActive(colorCode);
 
             camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
 

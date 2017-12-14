@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BodyMixer : MonoBehaviour {
     
     private Vector3 forward;
@@ -80,5 +81,10 @@ public class BodyMixer : MonoBehaviour {
     public int calculateArrayIndex( int id )
     {
         return (id - 1) / 2;
+    }
+
+    public int calculateColorFromIndex(int index)
+    {
+        return (index * 2) + 1;
     }
 }

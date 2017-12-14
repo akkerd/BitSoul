@@ -13,12 +13,13 @@ public class CollectColor : MonoBehaviour {
     private BodyMixer mixer;
     private BodyManager bodyManager;
     private GameObject body;
+    private UIManager ui;
 
     // Use this for initialization
     void Start () {
         //sr = GetComponent<SpriteRenderer>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        
+        ui = FindObjectOfType<UIManager>();
         bodyManager = FindObjectOfType<BodyManager>();
         spriteRenderers[0].sprite = fullFountain;
         spriteRenderers[1].sprite = emptyFountain;
@@ -38,7 +39,7 @@ public class CollectColor : MonoBehaviour {
                 mixer.takeColor(fountainColorCode);
                 int arrIndex = mixer.calculateArrayIndex(fountainColorCode);
                 bodyManager.StoreClone(arrIndex);
-
+                ui.uiCollectColor(fountainColorCode);
                 setFountainInactive();
             }
         }
