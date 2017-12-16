@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSize: 190.9
-  parallaxSpeed: 2
+  parallaxSpeed: -2
 --- !u!1001 &568213799
 Prefab:
   m_ObjectHideFlags: 0
