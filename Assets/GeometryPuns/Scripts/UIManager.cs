@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour {
     const int yellow = 7;
     const int magenta = 5;
     private GameObject[] canvasElements;
-    private Vector3 big = new Vector4(15f, 15f, 15f);
+    private Vector3 big = new Vector4(24f, 24f, 24f);
     private Vector3 small = new Vector4(10f, 10f, 10f);
  
     public GameObject whiteSprite;
