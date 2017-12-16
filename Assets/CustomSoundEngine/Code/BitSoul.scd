@@ -1,50 +1,29 @@
 (
-s.boot;
+s.reboot;
 
-~filePath = "C:/Users/ANIA/Documents/GitHub/BitSoul/Assets/CustomSoundEngine/Samples";
+~filePath = "C:/Users/ANIA/Documents/GitHub/BitSoul/Assets/CustomSoundEngine/Samples/";
 
 ~buffArrayIdle = [
-].collect({ arg snd; Buffer.read(Server.default, ~filePath+/+snd)});
+	"hello.wav",
+	"hey.wav",
+	"look.wav",
+	"listen.wav"
+].collect({ arg snd; Buffer.read(Server.default, ~filePath++snd)});
 
 // NOTE DEFS ///////////////////////////
 ~dur = PatternProxy(Pn(0.25, inf));
-~repeat = PatternProxy(Pn(16, inf));
+~repeat = PatternProxy(Pn(2, 4));
 
-n = Pdef(\fmajor7, Pbind(\dur, ~dur, \freq, Pseq( [65,69,60,65,69,60,65,69,60,64].midicps)));
-m = Pdef(\gmajor7, Pbind(\dur, ~dur, \freq, Pseq( [67,71,62,67,71,62,67,71,62,66].midicps)));
+n = Pdef(\fmajor7, Pbind(\dur, ~dur, \freq, Pseq( [65,69,60,65,69,60,65,69,64].midicps)));
+m = Pdef(\gmajor7, Pbind(\dur, ~dur, \freq, Pseq( [67,71,62,67,71,62,67,71,66].midicps)));
 
-c = Pdef(\cmajor, Pbind(\dur, ~dur, \freq, Pxrand( [60,64,67].midicps ,~repeat)));
-f = Pdef(\fmajor, Pbind(\dur, ~dur, \freq, Pxrand( [65,69,60].midicps ,~repeat)));
-g = Pdef(\gmajor, Pbind(\dur, ~dur, \freq, Pxrand( [67,71,62].midicps ,~repeat)));
-e = Pdef(\eminor, Pbind(\dur, ~dur, \freq, Pxrand( [64,67,71].midicps ,~repeat)));
-a = Pdef(\aminor, Pbind(\dur, ~dur, \freq, Pxrand( [69,60,64].midicps ,~repeat)));
-d = Pdef(\dminor, Pbind(\dur, ~dur, \freq, Pxrand( [62,65,69].midicps ,~repeat)));
-b = Pdef(\bmajor, Pbind(\dur, ~dur, \freq, Pxrand( [59,63,66].midicps ,~repeat)));
-
-
-// PATTERN DEFS ///////////////////////////////
-
-/*~x1 = Pseq([c,e,f,g,b,c,f,m], inf).play;
-~x2 = Pseq([c,e,f,g,b,c,f,m], inf).play;
-~x1.stop;
-~x2.stop;
-
-~y1 = Pseq([d,a,c,g,d,c,a,m], inf).play;
-~y2 = Pseq([d,a,c,g,d,c,a,m], inf).play;
-~y1.stop;
-~y2.stop;
-
-~z1 = Pseq([a,c,g,f,a,c,g,n], inf).play;
-~z2 = Pseq([a,c,g,f,a,c,g,n], inf).play;
-~z1.stop;
-~z2.stop;
-
-y = Pseq([Pdef(\dminor),Pdef(\aminor),Pdef(\cmajor),Pdef(\gmajor),Pdef(\dminor),Pdef(\cmajor),Pdef(\aminor),Pdef(\gmajor7),], inf);
-8.do({ Pseq([Pdef(\dminor),Pdef(\aminor),Pdef(\cmajor),Pdef(\gmajor),Pdef(\dminor),Pdef(\cmajor),Pdef(\aminor),Pdef(\gmajor7),], inf).play});
-
-
-z = Pseq([Pdef(\aminor),Pdef(\cmajor),Pdef(\gmajor), Pdef(\fmajor),Pdef(\aminor),Pdef(\cmajor),Pdef(\gmajor),Pdef(\fmajor7),], inf);
-8.do({ Pseq([Pdef(\aminor),Pdef(\cmajor),Pdef(\gmajor), Pdef(\fmajor),Pdef(\aminor),Pdef(\cmajor),Pdef(\gmajor),Pdef(\fmajor7),], inf).play});*/
+c = Pdef(\cmajor, Pbind(\dur, ~dur, \freq, Pseq( [60,64,67].midicps ,~repeat)));
+f = Pdef(\fmajor, Pbind(\dur, ~dur, \freq, Pseq( [65,69,60].midicps ,~repeat)));
+g = Pdef(\gmajor, Pbind(\dur, ~dur, \freq, Pseq( [67,71,62].midicps ,~repeat)));
+e = Pdef(\eminor, Pbind(\dur, ~dur, \freq, Pseq( [64,67,71].midicps ,~repeat)));
+a = Pdef(\aminor, Pbind(\dur, ~dur, \freq, Pseq( [69,60,64].midicps ,~repeat)));
+d = Pdef(\dminor, Pbind(\dur, ~dur, \freq, Pseq( [62,65,69].midicps ,~repeat)));
+b = Pdef(\bmajor, Pbind(\dur, ~dur, \freq, Pseq( [59,63,66].midicps ,~repeat)));
 
 //SYNTH DEFS/////////////
 
@@ -77,20 +56,6 @@ SynthDef.new(\soundtrack, {
 	Out.ar(1,sig2);
 }).add;
 
-SynthDef(\music, {
-	arg out = 0, rate = 1, amp = 0.5, buffer = 0, gate = 0;
-	var signal, env;
-
-	env = EnvGen.ar(Env.adsr(1, 1, 0.75, 1), gate);
-
-	signal = PlayBuf.ar(1, buffer, BufRateScale.kr(buffer)*rate,
-		loop:1
-	);
-
-	Out.ar(out, (signal*amp) * env);
-}).add;
-
-
 
 OSCdef.new(
 	\start,
@@ -118,9 +83,9 @@ OSCdef.new(
 			~z2.stop;
 			switch (msg.at(1).postln,
 				1, { x = Synth.new(\soundtrack); },
-				3, { ~dur.source = Pn(0.25,inf); ~z1 = Pseq([c,e,f,g,b,c,f,m], inf).play; ~z2 = Pseq([c,e,f,g,b,c,f,m], inf).play;},
-				5, { ~dur.source = Pn(0.5, inf); ~y1 = Pseq([d,a,c,g,d,c,a,m], inf).play; ~y2 = Pseq([d,a,c,g,d,c,a,m], inf).play;},
-				7, {  ~dur.source = Pn(0.1,inf); ~repeat.source = Pn(8, inf); ~x1 = Pseq([a,c,g,f,a,c,g,n], inf).play; ~x2 = Pseq([a,c,g,f,a,c,g,n], inf).play;},
+				3, { ~dur.source = Pn(0.2,inf);  ~repeat.source = Pn(2, 4); ~z1 = Pseq([c,e,f,g,b,c,f,m], inf).play; ~z2 = Pseq([c,e,f,g,b,c,f,m], inf).play;},
+				5, { ~dur.source = Pn(0.8, inf); ~repeat.source = Pn(2, 2); ~y1 = Pseq([d,a,c,g,d,c,a,m], inf).play; ~y2 = Pseq([d,a,c,g,d,c,a,m], inf).play;},
+				7, {  ~dur.source = Pn(0.125,inf); ~repeat.source = Pn(2, 4); ~x1 = Pseq([a,c,g,f,a,c,g,n], 2).play; ~x2 = Pseq([a,c,g,f,a,c,g,n], inf).play;},
 			);
 		)
 	},
@@ -152,6 +117,17 @@ OSCdef.new(
 	'/stop',
 	nil, 57120
 );
+
+/*OSCdef.new(
+	\sampler,
+	{
+		arg msg;
+		[~buffArrayIdle].postln;
+		Synth.new(\sampler, [\buffer, ~buffArrayIdle]);
+	},
+	'/sampler',
+	nil, 57120
+);*/
 
 OSCdef.new(
 	\sampler,

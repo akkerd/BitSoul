@@ -99,32 +99,35 @@ public class BodyManager : MonoBehaviour{
 
     public void SwitchToIndex(int index)
     {
-        if (activeBodies[index])
-        {
-            int colorCode = mixer.calculateColorFromIndex(currentIndex);
-            ui.uiSetInactive(colorCode);
-            setPlayerComponents(currentBody, false);
-            currentBody.tag = "Untagged";
+        if (currentIndex != index)
+        { 
+            if (activeBodies[index])
+            {
+                int colorCode = mixer.calculateColorFromIndex(currentIndex);
+                ui.uiSetInactive(colorCode);
+                setPlayerComponents(currentBody, false);
+                currentBody.tag = "Untagged";
 
-            currentBody = bodyObjects[index];
-            currentIndex = index;
-            colorCode = mixer.calculateColorFromIndex(index);
-            ui.uiSetActive(colorCode);
+                currentBody = bodyObjects[index];
+                currentIndex = index;
+                colorCode = mixer.calculateColorFromIndex(index);
+                ui.uiSetActive(colorCode);
 
-            camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
+                camControl.setCameraOnPlayer(currentBody);                          // Change Camera Target
 
-            /* Enable new body scripts and tags */
-            setPlayerComponents(currentBody, true);
-            currentBody.tag = "Player";
+                /* Enable new body scripts and tags */
+                setPlayerComponents(currentBody, true);
+                currentBody.tag = "Player";
 
-            // For ignoring slone collisions
-            if (index == 0)
-                Physics2D.IgnoreLayerCollision(11, 9, true);
-            else
-                Physics2D.IgnoreLayerCollision(11, 9, false);
+                // For ignoring slone collisions
+                if (index == 0)
+                    Physics2D.IgnoreLayerCollision(11, 9, true);
+                else
+                    Physics2D.IgnoreLayerCollision(11, 9, false);
 
-            // Sound events
-            OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/player", currentBody.GetComponent<PlayerController>().identifier);
+                // Sound events
+                OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/player", currentBody.GetComponent<PlayerController>().identifier);
+            }
         }
     }
 

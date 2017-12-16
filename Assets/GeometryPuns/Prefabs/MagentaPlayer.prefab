@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4188313368504806
 Transform:
   m_ObjectHideFlags: 1
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797705770467454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.96, y: -3.5, z: 0}
+  m_LocalPosition: {x: 41.336514, y: 44.159946, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 4672057297990834}
@@ -133,12 +133,9 @@ MonoBehaviour:
   identifier: 5
   groundCheck: {fileID: 4672057297990834}
   groundCheckRadius: 0.1
-  whatToIgnore:
-    serializedVersion: 2
-    m_Bits: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
   grounded: 0
 --- !u!212 &212720248955762440
 SpriteRenderer:

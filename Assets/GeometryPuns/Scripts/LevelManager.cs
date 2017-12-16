@@ -7,24 +7,80 @@ public class LevelManager : MonoBehaviour {
 
 	public GameObject currentCheckpoint;
 	public GameObject deathParticle;
+    public int framesTillHello;
+    public float respawnDelay = 0.5f;
 
-    //private PlayerController player;
-    //private Color particleColor;
     private BodyManager bodyManager;
     UIManager ui;
+    private int timestamp;
+    private int previousSelector;
+    private int r;
+    private string[] idleSounds;
+    private bool respawning;
+    private int speed;
 
-	public float respawnDelay = 0.5f;
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         bodyManager = GameObject.FindGameObjectWithTag("BodyManager").GetComponent<BodyManager>();
         ui = FindObjectOfType<UIManager>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        timestamp = 0;
+        idleSounds = new string[] { "hello.wav", "hey.wav", "look.wav", "listen.wav" };
+        respawning = false;
+        speed = 4;
+    }
+
+    private void FixedUpdate()
+    {
+        if ( !Input.anyKey )
+        {
+            //Starts counting when no button is being pressed
+            timestamp += 1;
+        }
+        else
+        {
+            // If a button is being pressed restart counter to Zero
+            timestamp = 0;
+        }
+
+        if (timestamp == framesTillHello)
+        {
+            while (r == previousSelector)
+            {
+                r = Random.Range(0, 4);
+            }
+
+            previousSelector = r;
+            timestamp = 0;
+
+            OSCHandler.Instance.SendMessageToClient<string>("SuperCollider", "/sampler", idleSounds[r]);
+        }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/stop", 1);
+            Application.Quit();
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            speed += 1;
+            OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/changeSpeedST", speed);
+            Application.Quit();
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            speed -= 1;
+            OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/changeSpeedST", speed);
+            Application.Quit();
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
 	public void LoadScene(string scene){
 		SceneManager.LoadScene(scene);
@@ -42,6 +98,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private IEnumerator RespawnPlayerCo ( GameObject player ){
+        respawning = true;
         PlayerController pc = player.GetComponent<PlayerController>();
         pc.enabled = false;
         instantiateDeathParticles(player.transform, player.GetComponent<SpriteRenderer>().color);
@@ -49,7 +106,9 @@ public class LevelManager : MonoBehaviour {
 		player.GetComponent<Renderer>().enabled = false;
 
 		yield return new WaitForSeconds(respawnDelay);
-		pc.enabled = true;
+
+        respawning = true;
+        pc.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;
 		player.transform.position = currentCheckpoint.transform.position;
 	}
