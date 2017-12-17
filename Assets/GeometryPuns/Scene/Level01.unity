@@ -1372,11 +1372,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 69.55
+      value: 13.29
       objectReference: {fileID: 0}
     - target: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 66.69
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: 4620714805830026, guid: 2df8c8ac6ef7543479db694ad6d5c42a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3692,7 +3692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingPlatforms:
   - {fileID: 1481238472}
-  mainColor: {r: 0, g: 0, b: 0, a: 1}
+  mainColor: {r: 1, g: 1, b: 1, a: 1}
   enable: 1
 --- !u!4 &954271578 stripped
 Transform:
@@ -5449,7 +5449,9 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 8dc24ca06d3007f4f9f751fcd60effc5,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114289856489512416, guid: d69738eb2948c8447a32e83b63f8f958, type: 2}
+    - {fileID: 114047676092560484, guid: d69738eb2948c8447a32e83b63f8f958, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d69738eb2948c8447a32e83b63f8f958, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1282401720 stripped
