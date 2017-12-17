@@ -77,17 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -164,8 +162,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114891600510294752, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
+    - target: {fileID: 114400121095643550, guid: 84ebdd61fcc51554f865bb15c980b1d1,
+        type: 2}
+      propertyPath: elements.Array.data[0]
+      value: 
+      objectReference: {fileID: 1905301087}
+    - target: {fileID: 114400121095643550, guid: 84ebdd61fcc51554f865bb15c980b1d1,
+        type: 2}
+      propertyPath: mainColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212804929230410876, guid: 84ebdd61fcc51554f865bb15c980b1d1,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &84348091 stripped
@@ -1543,6 +1555,21 @@ Prefab:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 212292181994065304, guid: 260bdcacdfb3db844af966f3c90cf8b2,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212292181994065304, guid: 260bdcacdfb3db844af966f3c90cf8b2,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212292181994065304, guid: 260bdcacdfb3db844af966f3c90cf8b2,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 260bdcacdfb3db844af966f3c90cf8b2, type: 2}
   m_IsPrefabParent: 0
@@ -2194,7 +2221,7 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114891600510294752, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1125118095
@@ -3651,26 +3678,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4606211153163180, guid: 912e9911a2d3f464dbbe416f001ae128,
     type: 2}
   m_PrefabInternal: {fileID: 155438964}
---- !u!1 &1915038711 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1605614254876162, guid: 84ebdd61fcc51554f865bb15c980b1d1,
-    type: 2}
-  m_PrefabInternal: {fileID: 44007279}
---- !u!114 &1915038712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1915038711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159065233c2d8b948a2c53c1bea9e54b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enable: 0
-  elements:
-  - {fileID: 1905301087}
-  mainColor: {r: 0.07058824, g: 0.8745099, b: 0.9490197, a: 1}
 --- !u!4 &1915038716 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4606211153163180, guid: 84ebdd61fcc51554f865bb15c980b1d1,
