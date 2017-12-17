@@ -33,11 +33,11 @@ public class CyanController : PlayerController{
 	}
 
 	private void CheckDoubleJump(){
-		if(Input.GetKeyDown(KeyCode.Space) && !doubleJumped && !grounded && !(Rwalled || Lwalled)){
+		if(Input.GetButtonDown("Jump") && !doubleJumped && !grounded && !(Rwalled || Lwalled)){
 			player_rb.velocity = new Vector2(0.0f, jumpSpeed);
 			doubleJumped = true;
 		}
-		if(Input.GetKeyDown(KeyCode.Space) && (Rwalled || Lwalled) && !(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))){
+		if(Input.GetButtonDown("Jump") && (Rwalled || Lwalled) && !(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))){
 			if(Rwalled){
 				//player_rb.AddForce(new Vector2(-jumpSpeed * 200, jumpSpeed * 50));
 				player_rb.velocity = new Vector2(-moveSpeed, wallJumpSpeed);

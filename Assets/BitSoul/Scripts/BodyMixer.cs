@@ -28,7 +28,7 @@ public class BodyMixer : MonoBehaviour {
         colorDictonary.Add(15, Color.blue);        // blue
         colorDictonary.Add(21, Color.green);      // green
         colorDictonary.Add(35, Color.red);          // red
-        colorDictonary.Add(105, Color.black);     // black
+        colorDictonary.Add(105, Color.gray);     // gray
 
         // Initialize active powers' List
         activePowers = new LinkedList<int>();
