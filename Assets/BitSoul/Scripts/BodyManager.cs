@@ -128,6 +128,11 @@ public class BodyManager : MonoBehaviour{
                 // Sound events
                 OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/player", currentBody.GetComponent<PlayerController>().identifier);
             }
+            else
+            {
+                // Play wrong sound
+                OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/wrongPlayer", 1);
+            }
         }
     }
 
@@ -170,6 +175,11 @@ public class BodyManager : MonoBehaviour{
             SwitchToIndex(index);
 
             return true;
+        }
+        else
+        {
+            // Play wrong sound
+            OSCHandler.Instance.SendMessageToClient<int>("SuperCollider", "/wrongPlayer", 1);
         }
 
         return false;
