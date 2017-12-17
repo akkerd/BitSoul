@@ -18,7 +18,6 @@ public class Hostile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D ( Collider2D other){
-		
         GameObject player = other.gameObject;
         if (LayerMask.LayerToName(player.layer) == "Clone")
         {
@@ -32,11 +31,9 @@ public class Hostile : MonoBehaviour {
             }
         }
             
-        else
+        else if (LayerMask.LayerToName(player.layer) == "Player")
         {
             levelManager.RespawnPlayer(player);
-
         }
-		
 	}
 }
