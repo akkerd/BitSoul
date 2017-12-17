@@ -3674,6 +3674,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4503983036555466, guid: ae2b956bcf93efd48ab8c228bf584ed5,
     type: 2}
   m_PrefabInternal: {fileID: 83766359}
+--- !u!1 &949556881 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1605614254876162, guid: 84ebdd61fcc51554f865bb15c980b1d1,
+    type: 2}
+  m_PrefabInternal: {fileID: 2108457210}
+--- !u!114 &949556882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949556881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1248b35f28baf4b8387f720f42ac7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingPlatforms:
+  - {fileID: 1481238472}
+  mainColor: {r: 0, g: 0, b: 0, a: 1}
+  enable: 1
 --- !u!4 &954271578 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4800339753878328, guid: 0bcaad821397c754eb7f6c2e3715a596,
@@ -9190,7 +9210,9 @@ Prefab:
       propertyPath: elements.Array.data[0]
       value: 
       objectReference: {fileID: 1481238472}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114400121095643550, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
+    - {fileID: 114529042241704276, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 84ebdd61fcc51554f865bb15c980b1d1, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2108457211 stripped
