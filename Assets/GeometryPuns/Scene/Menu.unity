@@ -486,7 +486,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -222.09999}
+  m_AnchoredPosition: {x: 0, y: -201.59999}
   m_SizeDelta: {x: 235.63, y: 136.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079754476
@@ -521,13 +521,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'A,D or Left,Right
-
-    W or Spacebar
-
-    E or Left Ctrl
-
-    1, 2, 3, 4'
+  m_Text: "A,D or Left,Right\nW or Spacebar\nE or Left Ctrl\n1, 2, 3, 4\nL/R to wall\n
+    \       then space"
 --- !u!222 &1079754477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -629,7 +624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -222.1}
+  m_AnchoredPosition: {x: 0, y: -201.6}
   m_SizeDelta: {x: 235.63, y: 136.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402805906
@@ -670,7 +665,9 @@ MonoBehaviour:
 
     Merge
 
-    Detatch'
+    Detatch
+
+    Wall-Jump'
 --- !u!222 &1402805907
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -709,7 +706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -125.1}
+  m_AnchoredPosition: {x: 0, y: -104.600006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414173744
