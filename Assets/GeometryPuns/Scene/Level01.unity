@@ -7235,7 +7235,7 @@ Prefab:
     - target: {fileID: 114339845070084316, guid: b51bfdc3aadd4f9478f11cb65f8ba35b,
         type: 2}
       propertyPath: framesTillHello
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b51bfdc3aadd4f9478f11cb65f8ba35b, type: 2}

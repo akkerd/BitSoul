@@ -63,7 +63,7 @@ public class CollectColor : MonoBehaviour {
             yield return null;
         }
 
-        Debug.Log("I'm being called");
+        //Debug.Log("I'm being called");
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
        
         spriteRenderers[1].enabled = false;

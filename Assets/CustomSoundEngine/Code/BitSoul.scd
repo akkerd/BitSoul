@@ -93,7 +93,7 @@ OSCdef.new(
 	nil, 57120
 );
 
-OSCdef.new(
+/*OSCdef.new(
 	\changeSpeedST,
 	{arg msg;
 		[msg].postln;
@@ -101,7 +101,7 @@ OSCdef.new(
 	},
 	'/changeSpeedST',
 	nil, 57120
-);
+);*/
 
 OSCdef.new(
 	\stop,
